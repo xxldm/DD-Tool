@@ -1,4 +1,16 @@
 export default defineNuxtConfig({
+  app: {
+    // head
+    head: {
+      title: "DD-Tool",
+      meta: [
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+      ],
+      link: [
+        { rel: "icon", type: "image/png", href: "/bison.png" },
+      ],
+    },
+  },
   modules: [
     "@element-plus/nuxt",
     "@nuxt/devtools",
@@ -24,29 +36,41 @@ export default defineNuxtConfig({
         file: "en.yaml",
       },
       {
-        code: "cn",
+        code: "zh-CN",
         name: "简体中文",
-        file: "zh-cn.yaml",
+        file: "zh-CN.yaml",
       },
     ],
     lazy: true,
     langDir: "lang",
     strategy: "prefix",
-    defaultLocale: "cn",
+    defaultLocale: "zh-CN",
     vueI18n: {
-      fallbackLocale: "cn",
+      fallbackLocale: "zh-CN",
     },
   },
   elementPlus: {
     importStyle: "scss",
+    themes: ["dark"],
   },
   sourcemap: {
     server: true,
     client: false,
   },
   css: [
-    "@unocss/reset/tailwind.css",
+    "@unocss/reset/normalize.css",
+    "~/assets/style/medium.scss",
+    "~/assets/style/regular.scss",
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: "@use \"~/assets/style/element-variables.scss\" as element;",
+        },
+      },
+    },
+  },
   colorMode: {
     classSuffix: "",
   },

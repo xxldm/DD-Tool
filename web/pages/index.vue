@@ -1,17 +1,18 @@
 <template>
   <div>
-    <Logos mb-6 />
-    <Suspense>
-      <PageView />
-      <template #fallback>
-        <div
-          op50
-          italic
-        >
-          <span animate-pulse>Loading...</span>
-        </div>
-      </template>
-    </Suspense>
-    <InputEntry />
+    {{ t("a") }}
+    <client-only>
+      <el-date-picker
+        v-model="value1"
+        type="datetime"
+        placeholder="Select date and time"
+      />
+    </client-only>
+    <language-button />
   </div>
 </template>
+
+<script setup>
+const { t } = useI18n();
+const value1 = ref();
+</script>
