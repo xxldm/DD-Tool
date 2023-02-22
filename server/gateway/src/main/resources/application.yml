@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: xxldm.synology.me:8848
+        namespace: b9ecd4d4-51f4-4fd5-9923-8bbde8de813b
+      config:
+        server-addr: xxldm.synology.me:8848
+        namespace: b9ecd4d4-51f4-4fd5-9923-8bbde8de813b
+        file-extension: yaml
+  config:
+    import:
+#    - optional:nacos:gateway.yml
+    - nacos:${spring.application.name}?refreshEnabled=true
+
